@@ -48,9 +48,11 @@ def data_listener(x,y):
 				rssi_data[anchor_mac][device_mac].append(rssi) 
 			else:
 				## Filtering out target nodes
-				if device_mac == "4C:ED:FB:50:16:ED" or device_mac == "B8:63:4D:A2:0E:13":
+				if device_mac == "5C:5F:67:6A:E4:A6" or device_mac == "A4:50:46:52:F5:67":
 					rssi_data[anchor_mac][device_mac] = [rssi]
 
+		print("AQUIIIIIIIIIIIIII")
+		print(rssi_data)			
 		for a in rssi_data:
 			for d in rssi_data[a]:
 				rssi_data[a][d] = round((1. * sum(rssi_data[a][d])) / len(rssi_data[a][d]),1)
@@ -59,8 +61,11 @@ def data_listener(x,y):
 		for anchor_mac in rssi_data:
 			print("Summary: ", anchor_mac,int(dist(const.ANCHORS[anchor_mac], [x,y])), rssi_data[anchor_mac])
 		
+		print('Go to localize')
 		localize(rssi_data)
+		print('Go to Rssi Data')
 		rssi_data = {a: {} for a in const.ANCHORS}
+		print('Go to Print positions')
 		print_positions()
 
 def print_positions():
@@ -71,6 +76,7 @@ def print_positions():
 	for device_mac in const.positions:
 		print(device_mac, *const.positions[device_mac][0], const.positions[device_mac][1])
 		pos.append([dist(const.positions[device_mac][0], const.ANCHORS[a])for a in const.ANCHORS])
+	print(pos)
 	plot_heatmap(pos)
 
 if __name__ == '__main__':
@@ -85,6 +91,9 @@ if __name__ == '__main__':
 
 	args = parser.parse_args()
 
+	print("Conectando a: ", connect)
+	print("Host: ", args.host)
+	print("Port: ", args.port)
 	mqtt_thread = threading.Thread(target=connect, args=(args.host, args.port))
 	mqtt_thread.start()
 

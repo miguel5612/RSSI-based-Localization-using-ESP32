@@ -13,4 +13,4 @@ def get_position(device_mac):
 	if device_mac in const.positions:
 		return const.positions[device_mac][0]
 	else:
-		return const.ANCHORS['3C:71:BF:99:F9:E0']
+		return const.ANCHORS['30:AE:A4:18:2F:28']

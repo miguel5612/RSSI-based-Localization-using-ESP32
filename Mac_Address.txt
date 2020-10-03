@@ -1,0 +1,11 @@
+Node 1: 30:AE:A4:18:2F:28
+Node 2: 80:7D:3A:C5:0D:94
+Node 3: 24:6F:28:25:07:A4
+
+Laptop: Server 5C:5F:67:6A:E4:A6
+Target: Cellphone Miguel A4:50:46:52:F5:67
+
+
+Entrar al folder
+cd C:\msys32\home\miguel5612\RF_Distance_Meter\RSSI-based-Localization-using-ESP32\backend
+python main.py --host mqtt.onmotica.com --port 1883
