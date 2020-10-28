@@ -36,5 +36,5 @@ ANCHORS = {
 A = -2.031862 
 B = -9.2
 
-TIME_WINDOW = 15
+TIME_WINDOW = 1
 
